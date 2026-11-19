@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
-function App() {
+import HomePage from './pages/HomePage';
+import ExplorePage from './pages/ExplorePage';
+import SpinWheelPage from './pages/SpinWheelPage';
+import ItineraryPage from './pages/ItineraryPage';
+import SpecialtiesPage from './pages/SpecialtiesPage';
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/kham-pha/:category" element={<ExplorePage />} />
+          <Route path="/vong-quay" element={<SpinWheelPage />} />
+          <Route path="/lich-trinh" element={<ItineraryPage />} />
+          <Route path="/dac-san" element={<SpecialtiesPage />} />
+        </Routes>
+      </main>
+      <Footer />
+    </BrowserRouter>
   );
 }
-
-export default App;
